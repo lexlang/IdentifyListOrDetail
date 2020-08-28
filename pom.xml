@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.lexlang</groupId>
+  <artifactId>IdentifyListOrDetail</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.47</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.jsoup</groupId>
+		    <artifactId>jsoup</artifactId>
+		    <version>1.11.3</version>
+		</dependency>
+    	
+    	<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.6</version>
+		</dependency>
+    	
+    	<!-- https://mvnrepository.com/artifact/tw.edu.ntu.csie/libsvm -->
+		<dependency>
+		    <groupId>tw.edu.ntu.csie</groupId>
+		    <artifactId>libsvm</artifactId>
+		    <version>3.17</version>
+		</dependency>
+    	
+    </dependencies>
+  
+</project>
