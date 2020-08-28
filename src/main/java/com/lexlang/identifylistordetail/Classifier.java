@@ -45,7 +45,7 @@ public class Classifier {
 	
 	private JSONObject scaleValues;
 	
-	private Classifier(){
+	public Classifier(){
 		this.scaleValues=JSONObject.parseObject(SCALE);
 	}
 	
@@ -55,7 +55,7 @@ public class Classifier {
 	 * @param value 0为详情 1为列表
 	 * @throws IOException
 	 */
-	public void makeLable(String filePath) throws IOException{
+	private void makeLable(String filePath) throws IOException{
 		File aFile = new File(filePath+"details");
 		File[] aList = aFile.listFiles(new FileFilter(){
 			public boolean accept(File pathname) {
@@ -82,7 +82,7 @@ public class Classifier {
 		}
 	}
 	
-	public String values(String html){
+	private String values(String html){
 		JSONObject res = new ExtractElement(html).getFeatureFuncs();
 		StringBuilder sb=new StringBuilder();
 		for(int ind=0;ind<keys.length;ind++){
@@ -92,7 +92,7 @@ public class Classifier {
 		return sb.toString();
 	}
 	
-	public void train() throws IOException{
+	private void train() throws IOException{
 		svm_train.main(new String[] {new File("train.txt").getAbsolutePath(), new File("data.txt.model").getAbsolutePath()});
 	}
 	
@@ -105,7 +105,7 @@ public class Classifier {
 	 * 数据归一化
 	 * @throws IOException
 	 */
-	public void scaleValue() throws IOException{
+	private void scaleValue() throws IOException{
 		JSONObject res=new JSONObject();
 		for(int i=0;i<=14;i++){
 			String[] s=getMinMaxValue(i).split("_");
@@ -117,7 +117,7 @@ public class Classifier {
 		System.out.println(res.toJSONString());
 	}
 	
-	public String getMinMaxValue(int i) throws IOException{
+	private String getMinMaxValue(int i) throws IOException{
 		List<String> list = FileUtils.readLines(new File("train.txt"), "utf-8");
 		double min=1000000;
 		double max=-1;
