@@ -44,9 +44,13 @@ public class Classifier {
 	private final String SCALE="{\"11\":{\"min\":0.0,\"max\":67003.0},\"12\":{\"min\":0.0,\"max\":1.4124408384043272},\"13\":{\"min\":0.0,\"max\":24002.0},\"14\":{\"min\":0.0,\"max\":4.826100729955656},\"0\":{\"min\":0.0,\"max\":67.0},\"1\":{\"min\":-1.3738738738738738,\"max\":1080.8292682926829},\"2\":{\"min\":140.0,\"max\":301477.0},\"3\":{\"min\":0.0,\"max\":3374.0},\"4\":{\"min\":-6.853932584269663,\"max\":530.7272727272727},\"5\":{\"min\":0.0,\"max\":1.0},\"6\":{\"min\":2.1492191126553797,\"max\":5.479255625506993},\"7\":{\"min\":0.07142857142857142,\"max\":3.0},\"8\":{\"min\":0.0,\"max\":22142.0},\"9\":{\"min\":0.46153846153846156,\"max\":3709.0},\"10\":{\"min\":0.0,\"max\":8847.0}}";
 	
 	private JSONObject scaleValues;
+	private svm_my_predict pred;
 	
 	public Classifier(){
 		this.scaleValues=JSONObject.parseObject(SCALE);
+		if(new File("data.txt.model").exists()){
+			this.pred = new svm_my_predict("data.txt.model");
+		}
 	}
 	
 	/**
@@ -97,8 +101,7 @@ public class Classifier {
 	}
 	
 	public String predict(String html) throws IOException{
-		svm_my_predict predict = new svm_my_predict("data.txt.model");
-		return predict.predict("0 "+values(html))<0?"detail":"list";
+		return pred.predict("0 "+values(html))<0?"detail":"list";
 	}
 	
 	/**
